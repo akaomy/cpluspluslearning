@@ -1,0 +1,86 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+int main(void)
+{
+	//declaration of file names and file object
+	string f1name, f2name;
+	//fstream f1, f2;
+	ifstream f1;
+	ofstream f2;
+	//read names of files
+	cout << "Enter input file name f1name: ";
+	cin >> f1name;
+	cout << "Enter output file name f2name: ";
+	cin >> f2name;
+
+	//open files
+	//f1.open(f1name, ios::in);
+	//f2.open(f2name, ios::out);
+	f1.open(f1name);
+	f2.open(f2name);
+
+	//check if file open succeded
+	if (f1.fail())
+	{
+		cout << "Failed to open file " << f1name << endl;
+		return 1;
+	}
+
+	if (f2.fail())
+	{
+		cout << "Failed to open file " << f2name << endl;
+		return 1;
+	}
+
+	//files ready; start copying line by line
+	string line;
+	//getline does not read eoln; returns false when fail
+	int nlines = 0, nchars = 0, ndigits = 0, nletters = 0, npuncts = 0;
+	while (getline(f1, line))
+	{
+		nlines++;
+		cout << line << endl;
+		nchars += line.size(); //same as length()
+		//see is functions in https://cplusplus.com/reference/cctype/
+		for (size_t i = 0; i < line.length(); i++)
+		{
+			int ch;
+			ch = line[i];
+			//ch = line.at(i);
+			
+			if (isalpha(ch))
+			{
+				nletters++;
+			}
+			else if (isdigit(ch))
+			{
+				ndigits++;
+			}
+			else if (ispunct(ch))
+			{
+				npuncts++;
+			}
+		}
+	}
+
+	cout << "nlines = " << nlines << endl;
+	f2 << "nlines = " << nlines << endl;
+	cout << "nchars = " << nchars << endl;
+	f2 << "nchars = " << nchars << endl;
+	cout << "ndigits = " << ndigits << endl;
+	f2 << "ndigits = " << ndigits << endl;
+	cout << "nletters = " << nletters << endl;
+	f2 << "nletters = " << nletters << endl;
+	cout << "npuncts = " << npuncts << endl;
+	f2 << "npuncts = " << npuncts << endl;
+	//close open files
+	f1.close();
+	f2.close();
+
+	return 0;
+}

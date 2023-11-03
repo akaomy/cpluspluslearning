@@ -1,0 +1,10 @@
+Hello, this is C++ 102:
+FBSU
+Fall Quarter.
+This file has four text lines.
+Line number one.
+This is another line; number two.
+A third line is added.
+Now, we have four lines.
+But this is a longer file.
+So, we made it six lines.
