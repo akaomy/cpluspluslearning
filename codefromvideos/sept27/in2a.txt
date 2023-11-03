@@ -1,0 +1,6 @@
+Line number one.
+This is another line; number two.
+A third line is added.
+Now, we have four lines.
+But this is a longer file.
+So, we made it six lines.

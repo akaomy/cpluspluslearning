@@ -1,0 +1,66 @@
+c++ new topics to me:
+
+
+vector
+Segmentation fault (core dumped) -> when there are no elements to display
+
+
+auto i
+auto - compiler decides on the variable's datatype
+
+
+custom datatype for functions?
+reg function:
+int plusing(int a, int b) {
+	return a + b;
+}
+
+
+custom_type doSomething(int n) {
+	custom_type a = 1;
+	for (...) { ... f *= 1 }
+	return a;
+}
+
+
+create and use your own package or header
+someHeader.h file content:
+int i = 10;
+
+testFile.cpp
+#include <iostream>
+#include "someVarsHere.h"
+using namespace std;
+int main() {
+    cout << "here is your variable: " << i << endl;
+}
+output: here is your variable: 10
+
+
+new function:
+#include <cctype>
+ftemp = TempConvert::c2f(temp);
+
+
+toupper(someStringHere);
+tolower(someStringHere);
+sqrt(someNumHere);
+
+
+working with files:
+#include <fstream> 
+ifstream f1;
+ofstream f2;
+f1.open(f1name);
+f2.open(f2name);
+if (f1.fail())
+{
+	cout << "Failed to open file f1name";
+	return 1;
+}
+
+
+
+Terminology note: { } are braces. < > are angle brackets, or chevrons. 
+
+classes
