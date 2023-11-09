@@ -6,7 +6,7 @@ using namespace std;
 template<typename T, size_t N>
 void printValues(const array<T, N>& arr) {
     cout << "printing out all elements in the myArray: " << endl;
-    for (auto element: arr) { // built-in array's way for iteration
+    for (const auto& element: arr) { // built-in array's way for iteration
         cout << element << " ";
     } 
     cout << endl;
@@ -14,7 +14,14 @@ void printValues(const array<T, N>& arr) {
     // difference between myArr[i] and myArr.at(i)
     // later throws exception if an arugmen is not valid    
 
+    cout << "This is first element in the array: " << *arr.begin() << endl;
+
+    // .end() - points one past last element
+    // *something - meaning it's being dereferenced
+    cout << "This is last element in the array: " << *(arr.end()-1) << endl;
+
 }
+
 
 int main () {
 
