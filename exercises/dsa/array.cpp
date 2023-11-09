@@ -21,7 +21,7 @@ int main () {
     int size = 5;
 
     // static array
-    // deallocates when goes out of function
+    // allocated on a stuck and deallocates when the flow goes out of function
     int stArr[size];
 
     // dynamic array
