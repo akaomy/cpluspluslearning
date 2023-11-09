@@ -21,11 +21,11 @@ int main () {
     int size = 5;
 
     // static array
-    // allocated on a stuck and deallocates when the flow goes out of function
+    // is allocated on a heap and stays there until the memory is freed manually
     int stArr[size];
 
     // dynamic array
-    // is allocated on a heap and stays there until the memory is freed manually
+    // allocated on a heap and stays there until the memory is freed manually
     int* dynArr = new int[size];
 
     // Random Access:           O(1)
