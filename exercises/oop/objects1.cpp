@@ -3,6 +3,7 @@ using namespace std;
 
 
 class Restaurant {
+    // member functions
     public:
         void SetName(string restaurantName);
         void SetRating(int userRating);
@@ -11,12 +12,17 @@ class Restaurant {
         string name;
         int rating;
 
+};
+
+// :: <-scope resolution operator
+void Restaurant::SetName(string restaurantName) {
+   name = restaurantName;
 }
 
+void Restaurant::SetRating(int userRating) {
+   rating = userRating;
+}
 
-main () {
-    Restaurant favPlace;
-    favPlace.SetName("Central Plaza");
-
-    return 0;
-};
+void Restaurant::Print() {
+   cout << name << " -- " << rating << endl;
+}
