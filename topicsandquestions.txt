@@ -63,4 +63,15 @@ if (f1.fail())
 
 Terminology note: { } are braces. < > are angle brackets, or chevrons. 
 
-classes
+
+
+vectors
+vector<int> carSales;
+
+// carSales.at(0) = 122; Would be out-of-range error
+
+carSales.resize(3);
+
+carSales.at(0) = 122;
+carSales.at(1) = 11; 
+carSales.at(2) = 7;

@@ -17,6 +17,9 @@ vector<int> multiply_by_two(vector<int> numbers) {
 
     // multiply each number by 2
     for (i = 0; i < numbers.size(); ++i) {
+        if (numbers.at(i) < 0) {
+            numbers.at(i) = numbers.at(i) * -1;
+        };
         cout << numbers.at(i) * 2 << endl;
     }
 

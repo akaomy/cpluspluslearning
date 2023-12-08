@@ -1,34 +1,31 @@
+// Write a while loop to read integers from input until zero is read. For each integer read before zero, add the integer times three to vector vect1.
+
+// Ex: If the input is 8 2 3 4 0, then the output is:
+
+// 24
+// 6
+// 9
+// 12
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
-
-// Integers are read from input and stored into a vector until 0 is read. Output the odd elements in the vector in reverse order. End each number with a newline.
-
-// Ex: If the input is -1 8 -6 11 0, then the output is:
-
-// 11
-// -1
-
-// Note: (x % 2 != 0) returns true if x is odd.
-
 int main() {
-    vector<int> dataVector;
-    int value;
-    int i;
+   vector<int> vect1;
+   int value;
+   int i;
 
-    cin >> value;
-    while (value != 0) {
-        dataVector.push_back(value);
-        cin >> value;
-    }
+   while (value != 0) {
+      cin >> value;
+      value *= 3;
+      vect1.push_back(value);
+   }
+   vect1.pop_back();
 
-    // odd elements in reverse order
-    for (i = dataVector.size() -1; i >= 0; --i) {
-        if (dataVector.at(i) % 2 != 0) {
-            cout << dataVector.at(i) << endl;
-        }
-    }
+   for (i = 0; i < vect1.size(); ++i) {
+      cout << vect1.at(i) << endl;
+   }
 
-    return 0;
+   return 0;
 }
