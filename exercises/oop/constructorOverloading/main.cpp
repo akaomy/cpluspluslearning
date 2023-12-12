@@ -4,7 +4,8 @@ using namespace std;
 
 class Item {
    public:
-      Item();
+      Item(); // or
+      // like this Item(string inittialName = "Undefined", int initialRating = -1);
       Item(string inittialName, int initialRating);
       void Print();
 
@@ -13,13 +14,30 @@ class Item {
       int rating;
 };
 
+// Note: define initial constructor explicitly
+// because once custom constructor is created
+// compiler will not created default one 
+// that would allow to call it without arguments
+
 // Default constructor
+// Item::Item() {
+//    name = "UndefinedName";
+//    rating = -1;
+// }
+// or use default parameters when calling it in Class (public part) 
+
 Item::Item() {
    name = "UndefinedName";
    rating = -1;
 }
 
-// Another constructor
+
+Item::Item() {
+   name = "UndefinedName";
+   rating = -1;
+}
+
+// Custom constructor
 Item::Item(string inittialName, int initialRating) {
    name = inittialName;
    rating = initialRating;
@@ -31,7 +49,7 @@ void Item::Print() {
 }
 
 int main() {
-   Item foodPlace;              // Calls default constructor
+   Item foodPlace;             // Calls default constructor
    Item coffeePlace("Tom", 4); // Calls constructor with different values
 
    foodPlace.Print();
