@@ -24,16 +24,20 @@ class LinkedList {
 
         LinkedListNode* head;
 };
-
 LinkedList::LinkedList() {
-    cout << "In Linkedlist constructor" << endl;
+   cout << "In LinkedList constructor" << endl;
+   head = nullptr;
+}
 
-    // destructor deletes each node in linked list
-    while (head) {
-        LinkedListNode* next = head -> next;
-        delete head;
-        head = next;
-    }
+LinkedList::~LinkedList() {
+   cout << "In LinkedList destructor" << endl;
+    
+   // The destructor deletes each node in the linked list
+   while (head) {
+      LinkedListNode* next = head->next;
+      delete head;
+      head = next;
+   }
 }
 
 void LinkedList::Prepend(int dataValue) {
