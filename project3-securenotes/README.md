@@ -1,4 +1,4 @@
-Basic Password Manager for desktop windows machines only
+Basic Secure Notes Manager for desktop windows machines only
 goal: practive c++ and some security fundamential skills
 
 basic features:
