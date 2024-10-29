@@ -9,23 +9,41 @@
 
 using namespace std;
 
-
-// Function to encrypt note using a simple Caesar cipher
-string encrypt(string plainText, int key) {
-    string encryptedText = "";
-    for (char c : plainText) {
-        encryptedText += (c + key);  // Shift each character by the key
+EVP_PKEY *generate_key_pair() {
+    """ Initialize EVP_PKEY_CTX for RSA key generation
+        Sets desired key length to 2048 bits
+        Generates the key pair
+        Returns the generated key pair as an 'ECP_PKEY' 
+        or nullptr if an error occurred
+    """
+    EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new_id(EVP_PKEY_RSA, nullptr);
+    if (!ctx) {
+        std::cerr << "Failed to create EVP_PKEY_CTX" << std::endl;
+        return nullptr;
     }
-    return encryptedText;
-}
 
-// Function to decrypt note using a simple
-string decrypt(string encryptedText, int key) {
-    string decryptedText = "";
-    for (char c : encryptedText) {
-        decryptedText += (c - key);  // Shift each character by the negative key
+    if (EVP_PKEY_keygen_init(ctx) <= 0) {
+        std::cerr << "Failed to initialize keygen" << std::endl;
+        EVP_PKEY_CTX_free(ctx);
+        return nullptr;
     }
-    return decryptedText;
+
+    if (EVP_PKEY_CTX_set_rsa_keygen_bits(ctx, 2048) <= 0) {
+        std::cerr << "Failed to set key length" << std::endl;
+        EVP_PKEY_CTX_free(ctx);
+        return nullptr;
+    }
+
+    EVP_PKEY *key = nullptr;
+    if (EVP_PKEY_keygen(ctx, &key) <= 0) {
+        std::cerr << "Failed to generate key pair" << std::endl;
+        EVP_PKEY_CTX_free(ctx);
+        return nullptr;
+    }
+
+    EVP_PKEY_CTX_free(ctx);
+    return key;
+
 }
 
 int main() {
@@ -45,7 +63,6 @@ int main() {
         // encrypt title and content with the public RSA key with EVP_PKEY
         // decrypt title and content with the private RSA key with EVP_CIPHER
         // sign an verify messages using EVP_DigestSign and EVP_DigestVerify
-
 
 
     // Display encrypted title and content for verification
