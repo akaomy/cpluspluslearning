@@ -44,10 +44,39 @@ class Dog : public Animal
         }
 };
 
+class Cat : public Animal
+{
+    public:
+        Cat(string name) : Animal(name) {}
+
+        // copy asignment operator overloading
+        void operator = (const Cat &D)    
+        {
+            m_name = D.m_name;
+            cout << "Copy assignment operator called for " << m_name << endl;
+        }
+
+        // implement interface for cat
+        string MakeSound() override
+        {
+            return "Meow!";
+        }
+
+};
+
+template<typename T>
+void GetNameAndMakeSound(T& animal)
+{
+    cout << "The animal's name is: " << animal.GetName() << endl;
+    cout << ", and it makes a sound: " << animal.MakeSound() << endl;
+}
+
 int main() {
-    Dog dog = Dog("Taker");
-    cout << "The dog's name is: " << dog.GetName() << endl;
-    cout << ", and it makes a sound: " << dog.MakeSound() << endl;
+    Dog myDoggo = Dog("Taker");
+    GetNameAndMakeSound(myDoggo);
+
+    Cat NadyasCat = Cat("Mr.Wiskers");
+    GetNameAndMakeSound(NadyasCat);
+
     return 0;
- 
 }
