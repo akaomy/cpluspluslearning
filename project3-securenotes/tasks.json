@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build OpenSSL Project",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "${workspaceFolder}/snotes.cpp",          // Your C++ file to compile
+                "-o", "${workspaceFolder}/snotes.exe",    // Output executable name
+                "-IC:/OpenSSL-Win64/include",           // Path to OpenSSL include files
+                "-LC:/OpenSSL-Win64/lib",               // Path to OpenSSL library files
+                "-lssl",                                // Link OpenSSL SSL library
+                "-lcrypto"                              // Link OpenSSL Crypto library
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile with g++ and link OpenSSL libraries"
+        }
+    ]
+}
