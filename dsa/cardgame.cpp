@@ -1,19 +1,17 @@
 #include <iostream>
 using namespace std;
 
-string GetSuitsString(CardSuits suite);
-string GetElementString(cardElements card);
-int GenerateRandomNumber(int min, int max);
-
 // datatype to define variable
-enum CardSuits {
+enum CardSuits 
+{
     Club,
     Diamond,
     Heart,
     Spade
-}
+};
 
-enum cardElements {
+enum CardElements 
+{
     Ace,
     Two,
     Three,
@@ -27,9 +25,10 @@ enum cardElements {
     Jack,
     Queen,
     King
-}
+};
 
-string GetSuitsString(CardSuits suite) {
+string GetSuitsString(CardSuits suite) 
+{
     string s;
         switch (suite) {
         case Club:
@@ -48,9 +47,10 @@ string GetSuitsString(CardSuits suite) {
     return s;
 }
 
-string GetElementString(cardElements card) {
+string GetElementString(CardElements element) 
+{
     string s;
-    switch (card) {
+    switch (element) {
         case Ace:
             s = "Ace";
             break;
@@ -94,22 +94,21 @@ string GetElementString(cardElements card) {
     return s;
 }
 
-int GenerateRandomNumber(int min, int max) {
+int GenerateRandomNumber(int min, int max) 
+{
     static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
 
-    return min = static_cast<int>((max-min+1) * (rand() * fraction))
+    return min + static_cast<int>((max-min+1) * (rand() * fraction));
 }
 
-int main() {
-    CardSuits suit = Club;
-    cardElements card = Ace;
-
+int main() 
+{
     srand(static_cast<unsigned int>(time(0)));
     int iSuite = GenerateRandomNumber(0, 3);
     int iElement = GenerateRandomNumber(0,12);
 
     CardSuits suit = static_cast<CardSuits>(iSuite);
-    cardElements element = static_cast<cardElements>(iElement);
+    CardElements element = static_cast<CardElements>(iElement);
 
     cout << "The card is the " << GetElementString(element) << " of " << GetSuitsString(suit) << endl;
 
