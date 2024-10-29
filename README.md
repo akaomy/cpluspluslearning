@@ -18,4 +18,4 @@ other references and guides:
 to checkout:
 - [project based learning](https://github.com/practical-tutorials/project-based-learning?tab=readme-ov-file#cc)
 - [coding interview univercity](https://github.com/tomsoir/coding-interview-university)
-- [not nessesary C++ related, but useful. Newim tutorial](https://tammy.ai/yt/8zYDCBeJEgZjo.6uvH)
+- [not nessesary C++ related, but useful. Neovim tutorial](https://tammy.ai/yt/8zYDCBeJEgZjo.6uvH)
