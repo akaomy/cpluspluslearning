@@ -71,12 +71,33 @@ void GetNameAndMakeSound(T& animal)
     cout << ", and it makes a sound: " << animal.MakeSound() << endl;
 }
 
+template<typename T>
+class GenericAnimalTemplate
+{
+    private: T m_name;
+    public: 
+        // generic constructor
+        GenericAnimalTemplate(T animal) : m_animal(animal) {}
+        void GetNameAndMakeSound()
+        {
+            cout << "The animal's name is: " << m_animal.GetName() << endl;
+            cout << ", and it makes a sound: " << m_animal.MakeSound() << endl;
+        }
+};
+
 int main() {
     Dog myDoggo = Dog("Taker");
     GetNameAndMakeSound(myDoggo);
 
     Cat NadyasCat = Cat("Mr.Wiskers");
     GetNameAndMakeSound(NadyasCat);
+
+
+    GenericAnimalTemplate<Dog> dogTemplate (dog);
+    dogTemplate.GetNameAndMakeSound();
+
+    GenericAnimalTemplate<Cat> catTemplate (cat);
+    catTemplate.GetNameAndMakeSound();
 
     return 0;
 }
