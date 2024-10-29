@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// Declare the map globally to store note titles and encrypted notes
-map<string, string> secureNotes;
 
 // Function to encrypt note using a simple Caesar cipher
 string encrypt(string plainText, int key) {
@@ -16,28 +14,45 @@ string encrypt(string plainText, int key) {
     return encryptedText;
 }
 
-// Function to add a new note to the map
-void addNote(string title, string note, int key) {
-    // Encrypt the note before storing it
-    string encryptedNote = encrypt(note, key);
-    // Store the title and encrypted note in the global map
-    secureNotes[title] = encryptedNote;
-    cout << "Note titled '" << title << "' has been added." << endl;
+// Function to decrypt note using a simple
+string decrypt(string encryptedText, int key) {
+    string decryptedText = "";
+    for (char c : encryptedText) {
+        decryptedText += (c - key);  // Shift each character by the negative key
+    }
+    return decryptedText;
 }
 
 int main() {
-    // Example: Add secure notes to the map
-    string title, note;
-    int key = 3;  // Set encryption key (for Caesar cipher)
+    string title, content;
 
-    // Get user input for title and note content
     cout << "Enter note title: " << endl;
-    getline(cin, title);  // Use getline to allow spaces in the title
+    getline(cin, title); 
     cout << "Enter note content: " << endl;
-    getline(cin, note);  // Use getline for multi-line note content
+    getline(cin, content);
 
-    // Add the note to the map
-    addNote(title, note, key);
+    // Display inputerd title and content for verification
+    cout << "You've enterd title: " << title << " and content: " << content << endl;
+
+    // Encrypt title and content
+    string encryptedTitle = encrypt(title, 3);
+    string encryptedContent = encrypt(content, 3);
+
+    // Display encrypted title and content for verification
+    cout << "Encrypted title: " << encryptedTitle << endl;
+    cout << "Encrypted content: " << encryptedContent << endl;
+
+    // Add the encrypted note to the map
+    map<string, string> notes;
+    notes[encryptedTitle] = encryptedContent;
+
+    // Decrypt title and content
+    string decryptedTitle = decrypt(encryptedTitle, 3);
+    string decryptedContent = decrypt(encryptedContent, 3);
+    
+    // Display decrypted title and content for verification
+    cout << "Decrypted title: " << decryptedTitle << endl;
+    cout << "Decrypted content: " << decryptedContent << endl;
 
     return 0;
 }
