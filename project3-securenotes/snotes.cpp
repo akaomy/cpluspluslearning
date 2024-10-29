@@ -1,6 +1,11 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <openssl/evp.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+#include <openssl/conf.h>
+#include <openssl/rand.h>
 
 using namespace std;
 
@@ -31,28 +36,27 @@ int main() {
     cout << "Enter note content: " << endl;
     getline(cin, content);
 
-    // Display inputerd title and content for verification
+    // Display inputed title and content for verification
     cout << "You've enterd title: " << title << " and content: " << content << endl;
 
-    // Encrypt title and content
-    string encryptedTitle = encrypt(title, 3);
-    string encryptedContent = encrypt(content, 3);
+    // todo:
+    // Encrypt title and content with SSL:
+        // generate key pairs
+        // encrypt title and content with the public RSA key with EVP_PKEY
+        // decrypt title and content with the private RSA key with EVP_CIPHER
+        // sign an verify messages using EVP_DigestSign and EVP_DigestVerify
+
+
 
     // Display encrypted title and content for verification
-    cout << "Encrypted title: " << encryptedTitle << endl;
-    cout << "Encrypted content: " << encryptedContent << endl;
+    // cout << "Encrypted title: " << encryptedTitle << endl;
+    // cout << "Encrypted content: " << encryptedContent << endl;
 
     // Add the encrypted note to the map
-    map<string, string> notes;
-    notes[encryptedTitle] = encryptedContent;
+    // map<string, string> notes;
+    // notes[encryptedTitle] = encryptedContent;
 
-    // Decrypt title and content
-    string decryptedTitle = decrypt(encryptedTitle, 3);
-    string decryptedContent = decrypt(encryptedContent, 3);
-    
-    // Display decrypted title and content for verification
-    cout << "Decrypted title: " << decryptedTitle << endl;
-    cout << "Decrypted content: " << decryptedContent << endl;
+
 
     return 0;
 }
