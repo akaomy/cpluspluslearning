@@ -48,10 +48,7 @@ void arr2()
     cout << "can get next value of a specific element in the array using pointer *ptrAsAnArray+1: " << *ptrAsAnArray+1 << endl;
     cout << "can get value of a specific element in the ptrAsAnArray ptrAsAnArray[1]: " << ptrAsAnArray[1] << endl;
     cout <<  "can get address of selected element &ptrAsAnArray[1]: " << &ptrAsAnArray[1] << endl;
-    cout << "All values in this array: " << *ptrAsAnArray << " " << *ptrAsAnArray+1 << " " << *ptrAsAnArray+2 << " "
-    << *ptrAsAnArray+3 << " " << *ptrAsAnArray+4 << " " << endl;
     cout << " " << endl;
-;q:q
     cout << "print out each element in the ptrAsAnArray though *ptrAsAnArray: " << endl;
     while (*ptrAsAnArray)
     {
@@ -59,7 +56,6 @@ void arr2()
         cout << ptrAsAnArray<< endl;
         ptrAsAnArray++;
     }
-    cout << " " << endl;
 
     cout << "since we moved pointer 5 times, we need to move it back: " << ptrAsAnArray << " " << endl;
     ptrAsAnArray = ptrAsAnArray - 5;
