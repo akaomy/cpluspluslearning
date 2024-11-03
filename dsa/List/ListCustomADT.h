@@ -1,6 +1,7 @@
 #ifndef LISTCUST_H
 #define LISTCUST_H
 
+
 class ListCustADT {
     private:
         int number_of_items;
@@ -16,6 +17,7 @@ class ListCustADT {
         int Count(); // number of items the list has at a moment
 };
 
+
 // complexity: constant O(1)
 int ListCustADT::Get(int index) {
 
@@ -26,6 +28,7 @@ int ListCustADT::Get(int index) {
   return number_of_items[index];
 
 }
+
 
 void ListCustADT::Insert(int value, int index) {
     // to increase capacity of the list_of_items each time we insert a new item
@@ -38,12 +41,27 @@ void ListCustADT::Insert(int value, int index) {
         // aborts the operation, but doesn't return anything since the method is void type > it cannot return anyting
         return;
 
-    // copy current array
-    // increase array length
     // initialize new array
-    // fill in array with values
-    // remove copied array
+    int *newArray = new int[number_of_items + 1];
 
+    // copy elements of the old array to the new array
+    for (int i = 0, j = 0; i < number_of_items; i++, j++) {
+      if (j == index)
+        {
+            newArray[i] = value; // insert item at the specified index
+            ++j; // move to the next position in the new array
+        }
+        newArray[j] = list_of_items[i];
+    }
+
+    // free the old array memory
+    delete[] list_of_items;
+
+    // point to the new array
+    list_of_items = newArray;
+
+    // update the count of items by one
+    number_of_items++;
 }
 
 
