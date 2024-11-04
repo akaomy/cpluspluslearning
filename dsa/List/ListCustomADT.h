@@ -80,4 +80,34 @@ int ListCustADT::Search(int searchValue)
   return -1;
 }
 
+void ListCustADT::Delete(int index)
+{
+  // iterate through all list elements and assign them into a new array of List elements
+
+  // check out of bounf index
+  if (index < 0 || index > number_of_items)
+    return;
+
+    // initialize new array
+    int *newArray = new int[number_of_items];
+
+    // copy elements of the old array to the new array
+    for (int i = 0, j = 0; i < number_of_items; i++, j++) {
+        if (j == index)
+        {
+            continue; // skip element at specified index
+        }
+        newArray[j++] = list_of_items[i];
+    }
+
+    // free the old array memory
+    delete[] list_of_items;
+
+    // point to the new array
+    list_of_items = newArray;
+
+    // update the count of items by one
+    number_of_items--;
+}
+
 #endif //LISTCUST_H
