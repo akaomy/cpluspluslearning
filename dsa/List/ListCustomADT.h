@@ -10,7 +10,7 @@ class ListCustADT
 
     public:
         ListCustADT(); // constructor
-        ~ListCustADT(); // distructor
+        ~ListCustADT(); // destructor
         int Get(int index);
         void Insert(int value, int index);
         int Search(int value);
@@ -18,6 +18,16 @@ class ListCustADT
         int Count(); // number of items the list has at a moment
 };
 
+ListCustADT::ListCustADT()
+{
+  number_of_items = 0;
+  list_of_items = nullptr;
+}
+
+ListCustADT::~ListCustADT()
+{
+  delete [] list_of_items; // free up memory when object is destroyed
+}
 
 // complexity: constant O(1)
 int ListCustADT::Get(int index)
@@ -27,7 +37,7 @@ int ListCustADT::Get(int index)
   if (index < 0 || index > number_of_items)
     return -1;
 
-  return number_of_items[index];
+  return list_of_items[index];
 
 }
 
