@@ -2,7 +2,8 @@
 #define LISTCUST_H
 
 
-class ListCustADT {
+class ListCustADT
+{
     private:
         int number_of_items;
         int * list_of_items;
@@ -19,7 +20,8 @@ class ListCustADT {
 
 
 // complexity: constant O(1)
-int ListCustADT::Get(int index) {
+int ListCustADT::Get(int index)
+{
 
   // check if the index is out of bound
   if (index < 0 || index > number_of_items)
@@ -30,7 +32,8 @@ int ListCustADT::Get(int index) {
 }
 
 
-void ListCustADT::Insert(int value, int index) {
+void ListCustADT::Insert(int value, int index)
+{
     // to increase capacity of the list_of_items each time we insert a new item
     // after that we need to iterate each item of the old list_of_items
     // and assign all of them to the new list
@@ -64,6 +67,17 @@ void ListCustADT::Insert(int value, int index) {
     number_of_items++;
 }
 
-
+// method's complexity O(n)
+int ListCustADT::Search(int searchValue)
+{
+  // iterate through each item in the list until it finds matched value
+  // return array index of found value
+  for (int i = 0; i < number_of_items; i++)
+  {
+    if (list_of_items[i] == searchValue)
+      return i;
+  }
+  return -1;
+}
 
 #endif //LISTCUST_H
