@@ -120,4 +120,9 @@ void ListCustADT::Delete(int index)
     number_of_items--;
 }
 
+int ListCustADT::Count()
+{
+  return number_of_items;
+}
+
 #endif //LISTCUST_H
