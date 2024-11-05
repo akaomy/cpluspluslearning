@@ -5,11 +5,12 @@
 class ListCustADT
 {
     private:
-        int number_of_items;
-        int * list_of_items;
+        int max_list_length;
+        int list_length;
+        int *items_list;
 
     public:
-        ListCustADT(); // constructor
+        ListCustADT(int size = 10); // constructor
         ~ListCustADT(); // destructor
         int Get(int index);
         void Insert(int value, int index);
@@ -18,63 +19,47 @@ class ListCustADT
         int Count(); // number of items the list has at a moment
 };
 
-ListCustADT::ListCustADT()
+ListCustADT::ListCustADT(const int size)
 {
-  number_of_items = 0;
-  list_of_items = nullptr;
+  max_list_length = size;
+  list_length = 0;
+  items_list = new int[max_list_length];
 }
 
 ListCustADT::~ListCustADT()
 {
-  delete [] list_of_items; // free up memory when object is destroyed
+  delete [] items_list; // free up memory when object is destroyed
 }
 
 // complexity: constant O(1)
 int ListCustADT::Get(int index)
 {
-
   // check if the index is out of bound
-  if (index < 0 || index > number_of_items)
-    return -1;
+  if (index < 0 || index >= list_length)
+  throw std::out_of_range("index is out of range in Get()");
 
-  return list_of_items[index];
-
+  // returns address of the index, not integer
+  return items_list[index];
 }
 
-
-void ListCustADT::Insert(int value, int index)
+void ListCustADT::Insert(int index, int value)
 {
-    // to increase capacity of the list_of_items each time we insert a new item
-    // after that we need to iterate each item of the old list_of_items
-    // and assign all of them to the new list
-    // plus insert item that user intended to insert on certain position
+  // inserting a value at certain index - shift elements toward the tail
 
-    // check if the index is out of bound
-    if (index < 0)
-        // aborts the operation, but doesn't return anything since the method is void type > it cannot return anyting
-        return;
+  // check if index is out of bound todo: HOW TO CHECK IT without preventing the method to add any items the the list
+  if (index < 0 || index > list_length) throw std::out_of_range("Index out of bounds in Insert()");
 
-    // initialize new array
-    int *newArray = new int[number_of_items + 1];
+  if (list_length >= max_list_length)
+    throw std::out_of_range("List is full; Cannot insert new elements");
 
-    // copy elements of the old array to the new array
-    for (int i = 0, j = 0; i < number_of_items; i++, j++) {
-      if (j == index)
-        {
-            newArray[i] = value; // insert item at the specified index
-            ++j; // move to the next position in the new array
-        }
-        newArray[j] = list_of_items[i];
-    }
+  // shift elements to make room for the new element
+  for (int i = list_length; i > index; i++)
+  {
+    items_list[i] = items_list[i - 1];
+  }
 
-    // free the old array memory
-    delete[] list_of_items;
-
-    // point to the new array
-    list_of_items = newArray;
-
-    // update the count of items by one
-    number_of_items++;
+  items_list[index] = value;
+  list_length++;
 }
 
 // method's complexity O(n)
@@ -82,9 +67,9 @@ int ListCustADT::Search(int searchValue)
 {
   // iterate through each item in the list until it finds matched value
   // return array index of found value
-  for (int i = 0; i < number_of_items; i++)
+  for (int i = 0; i < list_length; i++)
   {
-    if (list_of_items[i] == searchValue)
+    if (items_list[i] == searchValue)
       return i;
   }
   return -1;
@@ -95,34 +80,21 @@ void ListCustADT::Delete(int index)
   // iterate through all list elements and assign them into a new array of List elements
 
   // check out of bounf index
-  if (index < 0 || index > number_of_items)
-    return;
+  if (index < 0 || index >= list_length)
+    throw std::out_of_range("Index out of bounds in Delete()");
 
-    // initialize new array
-    int *newArray = new int[number_of_items];
+  // shift elements to the left
+  for (int i = index; i < list_length - 1; i++)
+  {
+    items_list[i] = items_list[i + 1];
+  }
 
-    // copy elements of the old array to the new array
-    for (int i = 0, j = 0; i < number_of_items; i++, j++) {
-        if (j == index)
-        {
-            continue; // skip element at specified index
-        }
-        newArray[j++] = list_of_items[i];
-    }
-
-    // free the old array memory
-    delete[] list_of_items;
-
-    // point to the new array
-    list_of_items = newArray;
-
-    // update the count of items by one
-    number_of_items--;
+  list_length--;
 }
 
 int ListCustADT::Count()
 {
-  return number_of_items;
+  return list_length;
 }
 
 #endif //LISTCUST_H
