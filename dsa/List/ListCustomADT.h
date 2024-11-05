@@ -50,7 +50,7 @@ void ListCustADT::Insert(int value, int index)
     // plus insert item that user intended to insert on certain position
 
     // check if the index is out of bound
-    if (index < 0 || index > number_of_items)
+    if (index < 0)
         // aborts the operation, but doesn't return anything since the method is void type > it cannot return anyting
         return;
 
