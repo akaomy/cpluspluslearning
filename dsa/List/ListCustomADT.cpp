@@ -35,5 +35,9 @@ int main() {
   cout << lst.Get(i) << endl;
   }
 
+  cout << "Search for 30: " << lst.Get(lst.Search(30)) << endl;
+  cout << "Amount of elements in the list" << lst.Count() << endl;
+
+
   return 0;
 }
