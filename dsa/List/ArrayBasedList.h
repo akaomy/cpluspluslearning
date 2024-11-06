@@ -1,8 +1,8 @@
-#ifndef LISTCUST_H
-#define LISTCUST_H
+#ifndef ArrayBasedList_H
+#define ArrayBasedList_H
 
 
-class ListCustADT
+class ArrayBasedList
 {
     private:
         int max_list_length;
@@ -10,8 +10,8 @@ class ListCustADT
         int *items_list;
 
     public:
-        ListCustADT(int size = 10); // constructor
-        ~ListCustADT(); // destructor
+        ArrayBasedList(int size = 10); // constructor
+        ~ArrayBasedList(); // destructor
         int Get(int index);
         void Insert(int value, int index);
         int Search(int value);
@@ -19,20 +19,20 @@ class ListCustADT
         int Count(); // number of items the list has at a moment
 };
 
-ListCustADT::ListCustADT(const int size)
+ArrayBasedList::ArrayBasedList(const int size)
 {
   max_list_length = size;
   list_length = 0;
   items_list = new int[max_list_length];
 }
 
-ListCustADT::~ListCustADT()
+ArrayBasedList::~ArrayBasedList()
 {
   delete [] items_list; // free up memory when object is destroyed
 }
 
 // complexity: constant O(1)
-int ListCustADT::Get(int index)
+int ArrayBasedList::Get(int index)
 {
   // check if the index is out of bound
   if (index < 0 || index >= list_length)
@@ -42,7 +42,7 @@ int ListCustADT::Get(int index)
   return items_list[index];
 }
 
-void ListCustADT::Insert(int index, int value)
+void ArrayBasedList::Insert(int index, int value)
 {
   // inserting a value at certain index - shift elements toward the tail
 
@@ -63,7 +63,7 @@ void ListCustADT::Insert(int index, int value)
 }
 
 // method's complexity O(n)
-int ListCustADT::Search(int searchValue)
+int ArrayBasedList::Search(int searchValue)
 {
   // iterate through each item in the list until it finds matched value
   // return array index of found value
@@ -75,7 +75,7 @@ int ListCustADT::Search(int searchValue)
   return -1;
 }
 
-void ListCustADT::Delete(int index)
+void ArrayBasedList::Delete(int index)
 {
   // iterate through all list elements and assign them into a new array of List elements
 
@@ -92,9 +92,9 @@ void ListCustADT::Delete(int index)
   list_length--;
 }
 
-int ListCustADT::Count()
+int ArrayBasedList::Count()
 {
   return list_length;
 }
 
-#endif //LISTCUST_H
+#endif //ArrayBasedList_H

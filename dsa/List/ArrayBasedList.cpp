@@ -1,11 +1,11 @@
 #include <iostream>
-#include "ListCustomADT.h"
+#include "ArrayBasedList.h"
 
 using namespace std;
 
 int main() {
 
-  ListCustADT lst = ListCustADT();
+  ArrayBasedList lst = ArrayBasedList();
   cout << "new list initialized" << endl;
 
   // todo: debug insert() method to see why I am getting weird output when getting a certain element info
