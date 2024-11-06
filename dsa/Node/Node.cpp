@@ -3,7 +3,8 @@
 
 using namespace std;
 
-void PrintNode(const Node<float> *node) {
+template<typename T>
+void PrintNode(const Node<T> *node) {
   // print out initial node
   // until it find NULL for the Next pointer
   // meaning end of the node chain
