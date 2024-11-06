@@ -8,7 +8,7 @@ void PrintNode(Node *node) {
   // until it find NULL for the Next pointer
   // meaning end of the node chain
 
-  while (node != NULL)
+  while (node != nullptr)
   {
     cout << node->value << "->";
     node = node->next;
@@ -16,14 +16,13 @@ void PrintNode(Node *node) {
 };
 
 int main() {
-
-  Node *first_node = new Node;
+  const auto first_node = new Node;
   first_node->value = 1;
 
-  Node *second_node = new Node;
+  const auto second_node = new Node;
   second_node->value = 2;
 
-  Node *third_node = new Node;
+  const auto third_node = new Node;
   third_node->value = 3;
 
   first_node->next = second_node;
