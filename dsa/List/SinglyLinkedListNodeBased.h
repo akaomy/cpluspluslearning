@@ -9,14 +9,17 @@ class LinkedList
       int ll_count;
 
     public:
-      T value;
-      LinkedList<T> *next;
+      // first node
+      Node<T> *head;
+
+      // last node
+      Node<T> *tail;
 
       LinkedList<T>(); // constructor
       ~LinkedList(); // desctructor
 
-      public: int Insert(T value);
-      public: T Get(int index);
+      public: int Insert(int index, T value);
+      public: T *Get(int index);
       public: T Remove(int index);
       public: int Length();
 
@@ -30,7 +33,7 @@ class LinkedList
 LinkedList::LinkedList() {} // constructor definitions
 LinkedList::~LinkedList() {} // destructor definitions
 
-int LinkedList::Insert(T value) {}
+int LinkedList::Insert(int index, T value) {}
 T LinkedList::Get(int index) {}
 T LinkedLIst::Remove(int index) {}
 int LinkedList::Length() {}
