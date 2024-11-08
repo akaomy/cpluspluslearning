@@ -31,7 +31,18 @@ representation and information in the symbol-table
 
 
 ## Symbol-table
+Is a data structure that is used to store information about a variable names
+in the source program and collect various information about their attributes
+(e.g. type, scope, case of procedure names, etc...)
+e.g. <br />
+<pre>
+id name | type | scope | data type | memory allocation | etc...
+   x    |  Var |Global |    int    |       0x001       |
+   y    |  Var |Local  |   float   |       0x00F       |
+   foo  | Func |Global |   void    |       0x0A2       |
+MyClass |Class |Global |    n/a    |        n/a        |
 
+</pre>
 
 ## Lexical Analysis (scanning)
 Reads stream of characters that makes up the source 
