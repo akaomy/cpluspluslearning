@@ -2,13 +2,16 @@
 
 using namespace std;
 
-int callByValue(int a, const int b) {
+int callByValue(int a, const int b)
+{
+  // works with copied values of a and b and doesn't change them
   a = a + b;
   return a;
 }
 
 int callByReference(int *a, const int *b)
 {
+  // works with direct values of a and b and change a
   *a = *a + *b;
   return *a;
 }
