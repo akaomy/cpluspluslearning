@@ -11,6 +11,7 @@ repo for: solutions to exercises i collected from different sources
 books used:
 - C++ Data Structures and Algorithms Packt publishing
 - Compilers. Principles, Techniques, and Tools by Aho, Lam, Sethi, Ullman
+- Programming: Principles and Practice Using C++, 3rd Edition B. Stroustrup
 - a bit of ChatGPT to explain concepts and other books and Internet for doublechecking facts
 
 other references and guides:
