@@ -7,7 +7,16 @@ an attempt to make basic compiler for c++ for better understanding how programs 
 ## Target
 x86 Architecture
 
-## Tools
+## Potential Tools
+general:
+- Scanner generator (lexical)
+- Parser Generator (syntax)
+- Syntax-directed translation engines
+- Code-generators
+- Data-flow analysis engines
+- Compiler-construction toolkits
+
+specific:
 - LLVM or Clang for compiling to machine code
 - Lex or Yacc (Flex or Bison) for lexical and syntactic parsers
 - ANTLR for parsing
