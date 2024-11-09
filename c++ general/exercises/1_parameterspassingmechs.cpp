@@ -11,7 +11,7 @@ int callByValue(int a, const int b)
 
 int callByReference(int *a, const int *b)
 {
-  // works with direct values of a and b and change a
+  // works with direct values of a and b and changes a
   *a = *a + *b;
   return *a;
 }
