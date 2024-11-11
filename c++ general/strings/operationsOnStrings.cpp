@@ -34,5 +34,17 @@ int main()
   cout << "isprint(str3[0]) - is printable: " << isprint(str3[0]) << endl; // todo: learn more on it
   cout << "ispunct(str3[0]) - if it's punctuation: " << ispunct(str3[0]) << endl;
 
+  cout << "Base str: " << str3 << endl;
+  cout << str3.length() << endl;
+  cout << str3.size() << endl; // todo: look up what's the difference between .size() and .length()
+
+  cout << str3.at(0) << endl;
+  cout << str3.back() << endl;
+  cout << str3.front() << endl;
+
+  cout << str3.empty() << endl;
+  cout << str3.append("hellooy") << endl;
+  cout << str3.replace(12, 12, " replaced");
+
   return 0;
 }

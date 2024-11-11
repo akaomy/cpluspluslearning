@@ -2,8 +2,12 @@
 
 using namespace std;
 
-void consecutiveInput(string first, string second)
+void consecutiveInput()
 {
+  string first, second;
+  cout << "enter two strings: ";
+  cin >> first >> second;
+  cout << endl;
   cout << "Your inputs: " << first << " " << second << endl;
 }
 
@@ -38,8 +42,9 @@ int main() {
   string str1 = "Hello ";   // copy initialization
   string str2 = "World !";
 
-  consecutiveInput(str1, str2);
+  consecutiveInput();
   displayCharInString(str1);
   findPunctuationInString(str2);
 
+  return 0;
 }
