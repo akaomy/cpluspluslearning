@@ -3,7 +3,8 @@
 using namespace std;
 
 int main() {
-  string str;                     // string declaration
+  string str;                      // string declaration
+  string str0 = "Fundamentals of Data Engineering.";
   string str2 = str;              // str2 is a copy of str1
   string str3 = "Hello World!";   // copy initialization
   string str4(10, 'c');       // direct initialization
