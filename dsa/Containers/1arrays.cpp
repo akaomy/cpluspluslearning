@@ -78,6 +78,7 @@ void printCPPArray()
   // accessing and modifying
   stdArray[0] = 10;
   stdArray.at(0) = 10;
+  std::get<1>(stdArray) = 20;
 
   for (int i = 0; i < size; i++)
   {
@@ -94,6 +95,7 @@ void printCPPArray()
   {
     std::cout << e.what() << std::endl;
   }
+
 }
 
 int main()
