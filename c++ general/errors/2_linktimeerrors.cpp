@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void func();
+void func(); // will fail because no definition of the funciton
 // void func2()
 // {
 //     cout<<"Hello world!"<<endl;
@@ -11,6 +11,7 @@ void func();
 
 int main()
 {
+  func();
     // Undefined Reference: Function declared but not defined.
     // func();
     // output: undefined reference to `func()'
