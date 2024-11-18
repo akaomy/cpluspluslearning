@@ -15,9 +15,10 @@ class LinkedList {
         // destructor
         ~LinkedList() {};
 
-        // get
-        T getHead() const
+
+        T GetValue(T nodeIndex) const
         {
+            // TODO: get specific item with given index
             if (head != nullptr)
             {
                 return head->value;
@@ -25,17 +26,12 @@ class LinkedList {
             return T(); // Return default value (0 for int, nullptr for pointer types, etc.)
         };
 
-        T getTail() const
+        T GetIndex(T nodeValue) const
         {
-            if (tail != nullptr)
-            {
-                return tail->value;
-            }
-            return T(); // Return default value (0 for int, nullptr for pointer types, etc.)
-        };
+            // TODO: get value of a node with given index
+        }
 
-        // insert
-        int insertAtEnd(T nodeValue)
+        int InsertAtEnd(T nodeValue)
         {
             // create a new node with some vals
             auto *newNode = new Node<T>(nodeValue);
@@ -55,7 +51,34 @@ class LinkedList {
             return 1;
         };
 
-    void printList()
+        int insertAtBeg()
+        {
+            // TODO:
+        }
+
+        int insertAtIndex()
+        {
+            // TODO:
+        }
+
+        int DeleteAtEnd()
+        {
+            // get previous node
+            // how?
+            // TODO
+        }
+
+        int DeleteAtBeg()
+        {
+            // TODO:
+        }
+
+        int DeleteAtIndex()
+        {
+            // TODO:
+        }
+
+        void PrintList()
     {
         Node<T> *current = head;
         // traverse the list and print each node value and next pointer
@@ -75,18 +98,6 @@ class LinkedList {
             current = current->next;
         }
     }
-
-
-          // beginnig
-          // end
-          // any position between beg. and end
-      // delete
-          // beginnig
-          // end
-          // any position between beg. and end
-      // search
-
-
 };
 
 

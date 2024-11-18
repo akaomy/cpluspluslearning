@@ -5,13 +5,13 @@ int main() {
   // create a LinkedList on heap
   LinkedList<int>* heapLst = new LinkedList<int>();
 
-  heapLst->insertAtEnd(1);
-  heapLst->insertAtEnd(2);
-  heapLst->insertAtEnd(3);
-  heapLst->insertAtEnd(4);
+  heapLst->InsertAtEnd(1);
+  heapLst->InsertAtEnd(2);
+  heapLst->InsertAtEnd(3);
+  heapLst->InsertAtEnd(4);
 
   std::cout << "Linked List: " << std::endl;
-  heapLst->printList();
+  heapLst->PrintList();
   // delete heapLst;
 
   return 0;
