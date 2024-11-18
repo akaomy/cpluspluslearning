@@ -13,7 +13,7 @@ Declared variable creates an object with denoted type and maybe value during pro
     - deleted automatically once it reached out of scope
 2) heap based memory
 <br />
-Note: delete memory once it is not needed anymore:
+   - delete memory once it is not needed anymore:
 <br />
 <code>
    int* data1 = new int(3);
