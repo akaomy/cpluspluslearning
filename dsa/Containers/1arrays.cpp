@@ -75,10 +75,12 @@ void printCPPArray()
 
   std::cout << std::endl;
 
-  // accessing and modifying
-  stdArray[0] = 10;
-  stdArray.at(0) = 10;
-  std::get<1>(stdArray) = 20;
+  // getting and setting
+  stdArray[1] = 10;
+  stdArray.at(2) = 20;
+  std::get<3>(stdArray) = 30;
+  stdArray.front() = 00;
+  stdArray.back() = 40;
 
   for (int i = 0; i < size; i++)
   {
