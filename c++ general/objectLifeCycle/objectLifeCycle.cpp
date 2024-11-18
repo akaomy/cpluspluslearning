@@ -16,9 +16,10 @@ void foo()
 {
   int a = 0;
   std::cout << a << std::endl;
-  // entity one activates destructor only when program execution will real end of function foo scope
+  // entity one activates destructor only when program will reach function out of scope
   Entity one;
   Entity* two = new Entity();
+  delete two;
 }
 
 
