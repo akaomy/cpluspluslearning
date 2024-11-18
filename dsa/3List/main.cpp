@@ -5,14 +5,14 @@ int main() {
   // create a LinkedList on heap
   LinkedList<int>* heapLst = new LinkedList<int>();
 
-  // getHead
-  Node<int>* headNode = heapLst->getHead();
+  heapLst->insertAtEnd(1);
+  heapLst->insertAtEnd(2);
+  heapLst->insertAtEnd(3);
+  heapLst->insertAtEnd(4);
 
-  // getTail
-  Node<int>* tailNode = heapLst->getTail();
-
-  std::cout << "head node: " << headNode << std::endl;
-  std::cout << "tail node: " << tailNode << std::endl;
+  std::cout << "Linked List: " << std::endl;
+  heapLst->printList();
+  // delete heapLst;
 
   return 0;
 }
