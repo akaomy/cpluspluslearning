@@ -6,8 +6,8 @@
   * class scope (public, protected, private)
   * namespace scope
 * object - region of a memory that has value and type.
-When you declare a variable you create an object with this type and maybe value.
-* lifetime of an object - *how long* time during an object exists in a computer memory
+Declared variable creates an object with denoted type and maybe value during program execution.
+* lifetime of an object - *how long* an object exists in computer memory during program execution.
 
 1) stack based memory
     - deleted automatically once it reached out of scope
