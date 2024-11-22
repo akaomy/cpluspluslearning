@@ -8,14 +8,18 @@ void printCStyleArrayInfo()
   // simplest and oldest. fixed in size.
   // allocated on stack. no bounds checking.
   // easy to convert to pointers. can't use .at()
-  int arr[] = {1, 2, 3, 4, 5};
+  int arraySize = 5;
+  int arr[arraySize];
+  arr[0] = 15;
+  arr[1] = 10;
+  arr[2] = 5;
+  arr[3] = 0;
+  arr[4] = -15;
 
   // getting size
-  int size = sizeof(arr) / sizeof(arr[0]);
-  std::cout << "size of arr: " << size << std::endl;
 
   std::cout << "arr: " << "\t";
-  for (int i = 0; i < size; i++)
+  for (int i = 0; i < arraySize; i++)
   {
     std::cout << arr[i] << "\t";
   }
@@ -24,11 +28,18 @@ void printCStyleArrayInfo()
   // array element access and modify
   arr[2] = 30;
 
-  // looping through
+  int size = sizeof(arr) / sizeof(arr[0]);
   std::cout << "arr: " << "\t";
   for (int i = 0; i < size; i++)
   {
     std::cout << arr[i] << "\t";
+  }
+  std::cout << std::endl;
+  std::cout << "from range based loop" << std::endl;
+  // range based loop
+  for (const auto item: arr)
+  {
+    std::cout << item << "\t";
   }
 }
 
@@ -62,7 +73,7 @@ void printCPPArray()
   // part of c++ library
   // supports bound checking with .at() and other member functions
   // similar to c-style, but with better functionality
-  std::array<int, 5> stdArray = {1, 2, 3, 4, 5};
+  std::array<int, 5> stdArray {1, 2, 3, 4, 5};
 
   // getting size
   int size = stdArray.size();
@@ -72,7 +83,6 @@ void printCPPArray()
   {
     std::cout << stdArray[i] << "\t";
   }
-
   std::cout << std::endl;
 
   // getting and setting
@@ -93,7 +103,8 @@ void printCPPArray()
   try
   {
     int val = stdArray.at(100);
-  } catch (const std::out_of_range e)
+  }
+  catch (const std::out_of_range e)
   {
     std::cout << e.what() << std::endl;
   }
