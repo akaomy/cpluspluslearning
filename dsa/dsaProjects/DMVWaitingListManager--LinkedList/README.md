@@ -35,25 +35,25 @@ V1.2
 
 ### UML
 Node Person:
--name: string
--registrationTime: string
--next: Node*
+- name: string
+- registrationTime: string
+- next: Node*
 
 +Node (name: string, time: string)  
 +getName(): string  
 +getTime(): string  
 +setNext(Node*): void
-__________________________________  
+
 
 Linked List - DMVWaitingListManager
--head: Node*
--tail: Node*
--size: int
+- head: Node*
+- tail: Node*
+- size: int
 
 +addPersonAtPosition(name: string, index: int): void  
-+addPerson(name: string): void  
++addPersonToTheEnd(name: string): void  
 +removePersonAtPosition(index: int): void  
-+removePerson(name: string): void  
++removePersonFromEnd(name: string): int  
 +displayWaitlist(): map<int, string>  
 +findPerson(name: string): int  
 +findPosition(index: int): string
