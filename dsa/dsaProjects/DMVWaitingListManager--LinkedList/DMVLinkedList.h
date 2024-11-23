@@ -39,8 +39,8 @@ class DMVLinkedList {
         // create link between existing last node and the new node
         else
         {
-            tail = newPerson;
             tail->next = newPerson; // tail->next part of previous node is now linked to memory address of newPerson
+            tail = newPerson;
         }
         size++;
     }
