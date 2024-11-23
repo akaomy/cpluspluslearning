@@ -82,21 +82,18 @@ class DMVLinkedList {
       return 1;
     };
 
-    std::map<std::string, std::string> displayWaitlist()
+    void displayWaitlist()
     {
         /*    displayes list of names and time of registration of each name
-           +displayWaitlist(): map<string, string> */
-
-        std::map<std::string, std::string> result;
+           +displayWaitlist(): void */
 
         Person* current = head;
         std::cout << "You linked list" << std::endl;
         while (current->next != tail)
         {
-          result[current->name] = current->registrationTime;
-          current = current->next;
+            std::cout << "[Name: " << current->name << " Time: " << current->registrationTime << "]" << "\t";
+            current = current->next;
         }
-        return result;
     };
 };
 
