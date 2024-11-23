@@ -45,7 +45,7 @@ class DMVLinkedList {
         size++;
     }
 
-    int removePersonFromEnd(std::string name)
+    int removePersonFromEnd()
     {
     /*    removes new person at the end of the list
         +removePersonFromEnd(name: string): int */
@@ -91,7 +91,7 @@ class DMVLinkedList {
         std::cout << "You linked list" << std::endl;
         while (current->next != tail)
         {
-            std::cout << "[Name: " << current->name << " Time: " << current->registrationTime << "]" << "\t";
+            std::cout << "[Name: " << current->name << ", Time: " << current->registrationTime << "] ->" << "\t";
             current = current->next;
         }
     };
