@@ -43,5 +43,11 @@ int main()
   }
   std::cout << min << " " << max <<  std::endl;
 
+  // overall
+  // use long long for huge nums
+  // use limits + numeric_limits<...>::max() to get largest possible vals programmatically
+  // pay attention to difference between if () else () and if () if ()
+  // test input using different testing approaches -> very big and very small vals, same vals, neg vals, zeros...
+
   return 0;
 }

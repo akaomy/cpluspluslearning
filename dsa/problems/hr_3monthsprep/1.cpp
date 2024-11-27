@@ -40,4 +40,8 @@ int main() {
   plusMinus(arr);
 
   return 0;
+
+  // overall:
+  // use iomanip + setprecision(numerOfDigits); to manage amount of digits after decimal point
+  // use c++ 17 version for better compatibility with many apps including CLion
 }
