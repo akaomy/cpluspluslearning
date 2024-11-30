@@ -3,6 +3,7 @@
 #include <regex>
 #include <array>
 
+// legacy. do not use the function
 std::array<std::string, 3> splitString(const std::string& str) {
     std::array <std::string, 3> words{}; // array since we have fixed size here and it's not going to change
 
@@ -20,6 +21,43 @@ std::array<std::string, 3> splitString(const std::string& str) {
     return words;
 }
 
+std::string timeConversion(std::string s) {
+
+    // split the string
+    std::regex pattern(R"((\d{1,2}):(\d{2}:\d{2})([AP]M))");
+    std::smatch matches;
+
+    if (!std::regex_match(s, matches, pattern)) {
+        return "The string does not match the expected format.\n";
+    }
+
+    std::string firstPart = matches[1];
+    std::string secondPart = matches[2];
+    std::string thirdPart =  matches[3];
+
+
+    if (thirdPart == "PM") {
+        if (firstPart != "12") {
+            firstPart = std::to_string(std::stoi(firstPart) + 12);
+        }
+    }
+    else if (thirdPart == "AM")
+    {
+        if (firstPart == "12")
+        {
+            firstPart = "00";
+        }
+        else if (firstPart.size() == 1)
+        {
+            firstPart = "0" + firstPart;
+        }
+    }
+    else
+    {
+        return "The string does not match the expected format.\n";
+    }
+    return firstPart + ":" + secondPart;
+}
 
 int main() {
     // if firstPart = 12 and AM
@@ -38,12 +76,8 @@ int main() {
     std::string ampmTime = "12:10:40AM";
     std::string ampmTime2 = "1:35:50PM";
 
-    splitString(ampmTime);
-
-    //get each part from array
-    std::cout << splitString(ampmTime2)[0] << std::endl;
-    std::cout << splitString(ampmTime2)[1] << std::endl;
-    std::cout << splitString(ampmTime2)[2] << std::endl;
+    std::cout << timeConversion(ampmTime) << std::endl;
+    std::cout << timeConversion(ampmTime2);
 
   return 0;
 }
