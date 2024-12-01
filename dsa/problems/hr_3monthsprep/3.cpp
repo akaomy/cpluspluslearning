@@ -2,6 +2,8 @@
 #include <string>
 #include <regex>
 #include <array>
+#include <cassert>
+
 
 // legacy. do not use the function
 std::array<std::string, 3> splitString(const std::string& str) {
@@ -23,12 +25,11 @@ std::array<std::string, 3> splitString(const std::string& str) {
 
 std::string timeConversion(std::string s) {
 
-    // split the string
     std::regex pattern(R"((\d{1,2}):(\d{2}:\d{2})([AP]M))");
     std::smatch matches;
 
     if (!std::regex_match(s, matches, pattern)) {
-        return "The string does not match the expected format.\n";
+        return "The string does not match the expected format. FromRegex.\n";
     }
 
     std::string firstPart = matches[1];
@@ -40,44 +41,45 @@ std::string timeConversion(std::string s) {
         if (firstPart != "12") {
             firstPart = std::to_string(std::stoi(firstPart) + 12);
         }
-    }
-    else if (thirdPart == "AM")
-    {
-        if (firstPart == "12")
-        {
+    } else if (thirdPart == "AM") {
+        if (firstPart == "12") {
             firstPart = "00";
-        }
-        else if (firstPart.size() == 1)
-        {
+        } else if (firstPart.size() == 1) {
             firstPart = "0" + firstPart;
         }
     }
-    else
-    {
-        return "The string does not match the expected format.\n";
-    }
-    return firstPart + ":" + secondPart;
+
+        return firstPart + ":" + secondPart;
 }
 
+void test__timeConversion() {
+    // test cases:
+    // one digit hour, AM
+    // one digit hour, PM
+    // Noon
+    // Midnight
+    // Normal AM case
+    // Invalid input
+
+    std::string oneDigitHourAM = "1:00:00AM";
+    std::string oneDigitHourPM = "1:00:00PM";
+    std::string noon = "12:00:00PM";
+    std::string midnight = "12:00:00AM";
+    std::string normalAM = "2:00:00AM";
+    std::string normalPM = "2:00:00PM";
+    std::string invalidFormat = "12:00AM";
+
+    assert(timeConversion(oneDigitHourAM) == "01:00:00");
+    assert(timeConversion(oneDigitHourPM) == "13:00:00");
+    assert(timeConversion(noon) == "12:00:00");
+    assert(timeConversion(midnight) == "00:00:00");
+    assert(timeConversion(normalAM) == "02:00:00");
+    assert(timeConversion(normalPM) == "14:00:00");
+    assert(timeConversion(invalidFormat) == "The string does not match the expected format. FromRegex.\n");
+}
+
+
 int main() {
-    // if firstPart = 12 and AM
-    // then firstPart becomes "00"
-
-    // if firstPart = 12 and PM
-    // then don't do anything special - it just follows general rules
-
-    // if PM
-    // then switch (firstPart)
-    // case "1":
-    // firstPart = becomes "13"
-    // and so on
-    // until 12: 12 pm is 12 pm no need to replace first part
-
-    std::string ampmTime = "12:10:40AM";
-    std::string ampmTime2 = "1:35:50PM";
-
-    std::cout << timeConversion(ampmTime) << std::endl;
-    std::cout << timeConversion(ampmTime2);
-
+    test__timeConversion();
   return 0;
 }
