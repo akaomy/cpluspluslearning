@@ -1,3 +1,8 @@
+## skills I need:
+- working with files
+- understanding how to work with Qt
+- encoding / decoding files?
+
 ### code pieces that I found curious reading codebase for https://github.com/buggins/coolreader
 
 1) readability:
