@@ -90,7 +90,7 @@ void printCPPArray()
   stdArray.at(2) = 20;
   std::get<3>(stdArray) = 30;
   stdArray.front() = 00;
-  stdArray.back() = 40;
+  stdArray.back() = 40; // overwrites last element
 
   for (int i = 0; i < size; i++)
   {
