@@ -12,6 +12,7 @@ books used:
 - C++ Data Structures and Algorithms Packt publishing
 - Compilers. Principles, Techniques, and Tools by Aho, Lam, Sethi, Ullman
 - Programming: Principles and Practice Using C++, 3rd Edition B. Stroustrup
+- Common Sence Guide To Data Structures And Algoritms
 - a bit of ChatGPT to explain concepts and other books and Internet for doublechecking facts
 
 other references and guides:
