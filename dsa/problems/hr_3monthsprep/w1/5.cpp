@@ -20,10 +20,10 @@ std::vector<int> countStrings(std::vector<std::string> strings, std::vector<std:
         throw std::invalid_argument("The 'queries' array is empty.");
     }
 
-    for (int qr = 0; qr < queries.size(); qr++) {
+    for (const auto & querie : queries) {
         int counter = 0;
-        for (int strg = 0; strg < strings.size(); strg++) {
-            if (queries[qr] == strings[strg]) {
+        for (const auto & string : strings) {
+            if (querie == string) {
                 counter++;
             }
         }
