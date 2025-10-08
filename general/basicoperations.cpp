@@ -1,6 +1,6 @@
 #include <iostream>
 
-int checkForLargedtNum(int a, int b);
+int checkForLargestNum(int a, int b);
 int checkForSmallestNum(int a, int b);
 
 
@@ -49,7 +49,7 @@ int main() {
 }
 // i need to switch input numbers in place if one is biggern than another
 // bigger shoud go first
-int checkForLargedtNum(int a, int b) {
+int checkForLargestNum(int a, int b) {
     if (a > b) {
         return a;
     } else if (a < b) {
