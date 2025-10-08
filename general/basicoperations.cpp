@@ -21,7 +21,7 @@ int main() {
     std::cout << "Please enter second number" << std::endl;
     std::cin >> num2;
 
-    int largerNum = checkForLargedtNum(num1, num2);
+    int largerNum = checkForLargestNum(num1, num2);
     int smallestNum = checkForSmallestNum(num1, num2);
 
     std::cout << "The result: " << std::endl;
