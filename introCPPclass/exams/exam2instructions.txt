@@ -1,0 +1,105 @@
+// You must stick to the names of the functions and the steps.
+// Use the same steps in exam2_main.cpp but you need to make them work.
+// Open book and notes and Internet.
+// But you must use all the functions I ask you to build.
+// Use the same names and sequence of calls.
+// Work alone.
+// Write a C program that loops and asks the user to enter
+// an alphanumeric phone number as a string and converts it to a numeric one.
+// The number string can contain punctuation chars like - ( ) _ . etc.
+// Examples: 800-Beat-Cal ; 1-800.Got.Milk ; 888-IMask.up; 1(800)---got Milk
+// Your program will have 3 files: Exam2.h, Exam2.cpp, and Exam2_main.cpp .
+// Submit your *.cpp and .h files or links only; no zipped files.
+// Make use of the is functions cctype like:
+// isalnum, isalpha, isdigit, ispunct, isspace, tolower ..
+// Follow the guidelines and solve using this method to learn functions.
+// Means, you need to write the code for each given function.
+// Do not change the int main(void) function.
+// The last three functions are for beautifying and making it look nice.
+// use isalpha, isdigit, tolower
+// //********************************************
+// //File Exam2.h
+// #pragma once
+// #include <string>
+// using namespace std;
+// //declarations; prototypes, headers
+// bool isValidNumber(string line);
+// void toNumerics(string& line);
+// char toDigit(char ch);
+// void punctsToSpaces(string& line);
+// void removeSpaces(string& line);
+// void removeSpaces2(string& line);
+// void formatNumber(string& line);
+// void formatNumber2(string& line);
+// isValidNumber: input: string line; returns: bool
+// //returns true if line is a valid phone number; false if not.
+// //must have 11 letters and digits if first one is 1
+// //must have 10 letters and digits if first one is not 1
+// toNumerics: input: string line; return type: void
+// //converts all letters to digits as in the phonepad
+// //use toDigit to convert each char
+// toDigit: input: char; returns: char
+// //use switch instead of if-else
+// //use isalpha, isdigit, tolower
+// // A, B, C becomes 2
+// // D, E, F becomes 3
+// // G, H, I becomes 4
+// // J, K, L becomes 5
+// // M, N, O becomes 6
+// // P, Q, R, S becomes 7
+// // T, U, V becomes 8
+// // W, X, Y, Z becomes 9
+// punctsToSpaces: string line; return type: void
+// //convert all punctuations to spaces
+// // 415-723-2300 -> 415 723 2300
+// removeSpaces: string line; return type: void
+// //remove spaces if you can;
+// //415 723 2300 -> 4157232300
+// formatNumber: string line; return type: string
+// // you can make it like
+// // 14157232300 to 1-415-723-2300 or 1.415.723.2300 or 1 (415) 723-
+// 2300
+// // 4157232300 to 415-723-2300 or 415.723.2300 or (415) 723-2300
+// // you have full freedom here; the 1 may not be there.
+// //********************************************
+// //file Exam2.c
+// #include "exam2.h"
+// //definitions of the functions in exam2.h
+// //********************************************
+// //file exam2_main.cpp
+// #pragma warning (disable: 4996) //windows only
+// #include <iostream>
+// #include <string>
+// #include <<cctype>
+// #include "exam2.h"
+// using namespace std;
+// int main(void)
+// {
+// print "Welcome to exam2\n"
+// //read a string from the keyboard and process it
+// while (true)
+// {
+// //code inside the loop
+// string line;
+// cout << "Enter a 10-11 alphanumeric number: " << endl;
+// read line
+// if line is empty exit the while loop
+// //check if it is a valid number
+// if the entered number is not valid:
+// print "You entered an invalid number"
+// continue
+// toNumeric(line);
+// print "after toNumeric: "
+// print line.
+// puncts_to_spaces(line);
+// print "after puncts_to_spaces: "
+// print line.
+// remove_spaces(line);
+// print "after remove_spaces: "
+// print line
+// st = format_number(line);
+// print "after format_number: "
+// print line
+// }
+// return 0;
+// }
