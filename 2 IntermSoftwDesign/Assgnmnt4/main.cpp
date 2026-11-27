@@ -5,36 +5,49 @@
 using namespace std;
 
 int main() {
-    // Start with a small capacity (2) to test dynamic resizing
-    FavoritesManager favs(2);
+    FavoritesManager manager(2);
 
-    favs.addFavorite("https://www.foothill.edu");
-    favs.addFavorite("https://www.cppreference.com");
-    favs.addFavorite("https://www.ucsc.edu"); // Triggers capacity growth
-    favs.addFavorite("https://github.com");
+    // String construction & assignment styles from the module
+    string site1("https://www.foothill.edu");
+    string site2 = "https://www.deanza.edu";
+    string site3;
+    site3 = "https://www.sjsu.edu";
+    string site4 = "https://www.cppreference.com";
 
-    cout << "Total favorites stored: " << favs.getCount() << endl;
-    cout << "Item at index 2: " << favs.getAt(2) << endl;
+    manager.addFavorite(site1);
+    manager.addFavorite(site2);
+    manager.addFavorite(site3); // Triggers dynamic capacity growth
+    manager.addFavorite(site4);
 
-    string target = "https://github.com";
-    cout << "Index of " << target << ": " << favs.findIndex(target) << endl;
+    cout << "Total links stored: " << manager.getCount() << endl;
 
-    string missing = "https://example.org";
-    cout << "Index of " << missing << ": " << favs.findIndex(missing) << endl;
-
-    // Search by domain (.edu)
-    int eduCount = 0;
-    string* eduLinks = favs.findByDomain(".edu", eduCount);
-    cout << "Matches for '.edu' (" << eduCount << "):" << endl;
-    for (int i = 0; i < eduCount; ++i) {
-        cout << "  - " << eduLinks[i] << endl;
+    int index = 1;
+    string selected = manager.getLinkAt(index);
+    if (!selected.empty()) {
+        cout << "Link at index " << index << ": " << selected
+             << " (length: " << selected.length() << ")" << endl;
     }
-    delete[] eduLinks;
-    eduLinks = nullptr;
 
-    // Test copy constructor
-    FavoritesManager copiedFavs(favs);
-    cout << "Copied manager count: " << copiedFavs.getCount() << endl;
+    string exactSearch = "https://www.sjsu.edu";
+    int posIndex = manager.findLink(exactSearch);
+    cout << "Exact search for " << exactSearch << " -> index: " << posIndex << endl;
+
+    string domainToFind = ".edu";
+    int eduCount = 0;
+    string* eduResults = manager.findByDomain(domainToFind, eduCount);
+
+    cout << "Links containing '" << domainToFind << "' (" << eduCount << "):" << endl;
+    for (int i = 0; i < eduCount; i++) {
+        string line = "  - ";
+        line.append(eduResults[i]);
+        cout << line << endl;
+    }
+
+    delete[] eduResults;
+    eduResults = nullptr;
+
+    FavoritesManager copyManager(manager);
+    cout << "Copied manager count: " << copyManager.getCount() << endl;
 
     return 0;
 }

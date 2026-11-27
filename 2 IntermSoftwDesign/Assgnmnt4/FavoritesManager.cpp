@@ -2,79 +2,85 @@
 
 using namespace std;
 
-void FavoritesManager::resize(int newCapacity) {
+void FavoritesManager::resizeArray(int newCapacity) {
     if (newCapacity < 1) {
         newCapacity = 1;
     }
-    string* newItems = new string[newCapacity];
-    int copyCount = (size < newCapacity) ? size : newCapacity;
-    for (int i = 0; i < copyCount; ++i) {
-        newItems[i] = items[i];
+
+    string* updatedLinks = new string[newCapacity];
+    int limit = (count < newCapacity) ? count : newCapacity;
+
+    for (int i = 0; i < limit; i++) {
+        updatedLinks[i] = links[i];
     }
-    delete[] items;
-    items = newItems;
+
+    delete[] links;
+    links = updatedLinks;
     capacity = newCapacity;
-    size = copyCount;
+    count = limit;
 }
 
 FavoritesManager::FavoritesManager(int initialCapacity) {
     if (initialCapacity < 1) {
-        initialCapacity = 1;
+        capacity = 1;
+    } else {
+        capacity = initialCapacity;
     }
-    capacity = initialCapacity;
-    size = 0;
-    items = new string[capacity];
+    count = 0;
+    links = new string[capacity];
 }
 
 FavoritesManager::FavoritesManager(const FavoritesManager& other) {
     capacity = other.capacity;
-    size = other.size;
-    items = new string[capacity];
-    for (int i = 0; i < size; ++i) {
-        items[i] = other.items[i];
+    count = other.count;
+    links = new string[capacity];
+
+    for (int i = 0; i < count; i++) {
+        links[i] = other.links[i];
     }
 }
 
 FavoritesManager& FavoritesManager::operator=(const FavoritesManager& other) {
     if (this != &other) {
-        delete[] items;
+        delete[] links;
         capacity = other.capacity;
-        size = other.size;
-        items = new string[capacity];
-        for (int i = 0; i < size; ++i) {
-            items[i] = other.items[i];
+        count = other.count;
+        links = new string[capacity];
+
+        for (int i = 0; i < count; i++) {
+            links[i] = other.links[i];
         }
     }
     return *this;
 }
 
 FavoritesManager::~FavoritesManager() {
-    delete[] items;
-    items = nullptr;
+    delete[] links;
+    links = nullptr;
 }
 
 void FavoritesManager::addFavorite(const string& url) {
-    if (size >= capacity) {
-        resize(capacity * 2);
+    if (count == capacity) {
+        resizeArray(capacity * 2);
     }
-    items[size] = url;
-    ++size;
+    links[count] = url;
+    count++;
 }
 
 int FavoritesManager::getCount() const {
-    return size;
+    return count;
 }
 
-string FavoritesManager::getAt(int index) const {
-    if (index < 0 || index >= size) {
+string FavoritesManager::getLinkAt(int index) const {
+    if (index < 0 || index >= count) {
         return "";
     }
-    return items[index];
+    return links[index];
 }
 
-int FavoritesManager::findIndex(const string& url) const {
-    for (int i = 0; i < size; ++i) {
-        if (items[i] == url) {
+int FavoritesManager::findHyperlink(const string& targetUrl) const {
+    for (int i = 0; i < count; i++) {
+        if (links[i] == targetUrl) {
             return i;
         }
     }
@@ -87,9 +93,11 @@ string* FavoritesManager::findByDomain(const string& domain, int& matchCount) co
         return nullptr;
     }
 
-    for (int i = 0; i < size; ++i) {
-        if (items[i].find(domain) != string::npos) {
-            ++matchCount;
+    // Search each stored string from position 0 using find() and string::npos
+    for (int i = 0; i < count; i++) {
+        size_t foundPosition = links[i].find(domain, 0);
+        if (foundPosition != string::npos) {
+            matchCount++;
         }
     }
 
@@ -97,14 +105,15 @@ string* FavoritesManager::findByDomain(const string& domain, int& matchCount) co
         return nullptr;
     }
 
-    string* matches = new string[matchCount];
-    int idx = 0;
-    for (int i = 0; i < size; ++i) {
-        if (items[i].find(domain) != string::npos) {
-            matches[idx] = items[i];
-            ++idx;
+    string* matchedLinks = new string[matchCount];
+    int matchIdx = 0;
+
+    for (int i = 0; i < count; i++) {
+        if (links[i].find(domain, 0) != string::npos) {
+            matchedLinks[matchIdx] = links[i];
+            matchIdx++;
         }
     }
 
-    return matches;
+    return matchedLinks;
 }
